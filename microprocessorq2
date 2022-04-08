@@ -1,0 +1,111 @@
+//q1
+//1.write a program in 8086 to print a single charcter 'A' on the SCREEN.
+.model small
+.stack 100h
+.data
+.code
+    begin:
+        mov dl,'A'
+        mov ah,2
+        int 21h
+        mov ah,4ch
+        int 21h
+    end begin 
+//q2
+//2.WAP IN 8086 TO PRINT  YOUR NAME WITHOUT USING DATA VARIABLE.
+.model small
+.stack 100h
+.data
+.code
+    startup:
+        mov dl,'M'
+        mov ah,2
+        int 21h
+       
+        mov dl,'A'
+        mov ah,2
+        int 21h
+       
+        mov dl,'N'
+        mov ah,2
+        int 21h
+       
+        mov dl,'N'
+        mov ah,2
+        int 21h
+       
+        mov ah,4ch
+        int 21h
+        .exit
+        end 
+//q3
+//3.wap in 8086  to add two numbers 67 and 45 and save the result in dl register
+.model tiny
+.code
+    .startup:
+        mov al,67
+        mov bl,45
+        add al,bl
+        mov dl,al
+       
+       
+        .exit
+        end 
+//puttingh
+.model tiny
+.code
+    .startup:
+        mov al,67h
+        mov bl,45h
+        add al,bl
+        mov dl,al
+       
+
+        .exit
+        end 
+//q3.2
+//wap in 8086  to add two numbers 67 and 45 and save the result indlregister(alphabetaagadihuda0rakhnuparcha)
+.model tiny
+.code
+    .startup:
+        mov al,0A4h
+        mov bl,0BDh
+        add al,bl
+        mov dl,al
+       
+       
+        .exit
+        end 
+//q4
+.code
+    .startup:
+        mov al,0F7h
+        mov bl,0F5h  
+        mov cx,00h
+        add al,bl
+        mov dl,al
+        jc  carry
+        nop
+       
+        .exit
+        carry:
+        inc cl
+        end
+//q5(multiply)
+.code
+    .startup:
+        mov al,4
+        mov bl,2
+        mul   bl
+       
+        .exit
+        end 
+//q6(divide)
+.code
+    .startup:
+        mov al,4
+        mov bl,2
+        div  bl
+       
+        .exit
+        e 
