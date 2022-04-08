@@ -1,0 +1,228 @@
+WAP IN 8086 TO PRINT THE FOLLOWING STRING IN REVERSE:"SaS aabb SaS"
+
+
+data segment
+     string1 db "SaS aabb SaS$"  
+ends
+code segment
+    assume cs:code ds:data  
+    begin:
+        mov ax,@data
+        mov ds,ax
+        mov si,offset string1
+        mov cx,12
+        loop1:
+            mov bx,[si]
+            push bx
+            inc si
+        loop loop1
+       mov cx,12
+       loop2:
+             pop dx
+             mov ah,02h
+             int 21h
+             loop loop2
+       end begin
+
+       ----------------------------------
+.model tiny
+.stack
+.data
+    msg1 db 10,13,"Earth has seven oceans.They are pacific,atlantic,Indian,Artic and antartic.$"  
+    msg2 db 10,13,"In the above text,it should be remedified and stated.Earthg has five oceans.$"
+    msg3 db 10,13,"The deepest point of the earth is mariana trench,located in western pacific ocean about 200km east of the mariana ocean.$"
+    msg4 db 10,13,"The depth is almost 10,994m.$"
+    msg5 db 10,13,"However, the highest point of earth is the peak of the mount everest.$"  
+    msg6 db 10,13,"It's elevation...8848m.$"
+    msg7 db 10,13,"Recently ........new height 8848.86m.$"
+    msg8 db 10,13,"Mount everest is known as chomolungma in tibetian language and sagarmatha in nepali language.$"
+    msg9 db 10,13,"iT was first scaled by tenzing norgay sherpa.$"
+.code
+    begin:
+    mov ax,@data
+    mov ds,ax
+   
+    lea dx,msg1
+    mov ah,9
+    int 21h  
+   
+    lea dx,msg2
+    mov ah,9
+    int 21h
+   
+    lea dx,msg3
+    mov ah,9
+    int 21h
+   
+    lea dx,msg4
+    mov ah,9
+    int 21h
+   
+    lea dx,msg5
+    mov ah,9
+    int 21h
+   
+    lea dx,msg6
+    mov ah,9
+    int 21h
+   
+    lea dx,msg7
+    mov ah,9
+    int 21h
+   
+    lea dx,msg8
+    mov ah,9
+    int 21h
+   
+    lea dx,msg9
+    mov ah,9
+    int 21h
+               
+
+mov ah,4ch
+int 21h
+
+end begin
+---------------------------------------------------------------------
+
+;WAP IN 8086 ASSEMBLY LANGUAGE TO PRINT THE TWO INPUT NUMBERS ARE EQUAL OR NOT
+
+data segment
+    msg1 db 10,13,"Enter first number:::$"
+    msg2 db 10,13,"Enter second number:::$"
+    msg3 db 10,13,"They are equal.$"
+    msg4 db 10,13,"They are not equal.$"
+ends    
+
+code segment
+    assume ds:data cs:code
+   
+    begin:
+        mov ax,@data
+        mov ds,ax
+       
+        ;Display msg for entering first number
+        lea dx,msg1
+        mov ah, 9
+        int 21h
+        ;Input first number
+        mov ah,1
+        int 21h
+         
+       
+        mov cl,al;move first number to register cl  
+       
+        ;Display msg for entering first number
+        lea dx,msg2
+        mov ah, 9
+        int 21h
+     
+       
+       
+        ;Input second number
+        mov ah,1
+        int 21h
+       
+        mov dl,al  
+       
+        ;COMPARE TWO NUMBERS
+        cmp dl, cl
+       
+        ;Compare if they are equal
+        je l1
+            lea dx, msg4
+            mov ah, 9
+            int 21h
+               
+                jmp exit
+               
+        l1:lea dx,msg3
+            mov ah, 9
+            int 21h
+           
+                ;termination
+                exit:mov ah, 4ch
+                int 21h
+
+end begin
+
+------------------------------------------------------
+;WAP IN 8086 ASSEMBLY LANGUAGE TO SWAP TWO NUMBERS 97H AND 79H
+
+data segment
+    num1 db 97h
+    num2 db 79h
+ends      
+
+code segment
+   assume ds:data cs:code
+   
+   begin:
+   mov ax,@data
+   mov ds,ax
+   
+   mov al,num1
+   mov bl,num2
+   
+   xchg al,num2
+   xchg bl,num1
+   
+   mov ah,4ch
+   int 21h
+   end begin
+   
+   ----------------------------------------------------------------------
+   
+   ;WAP IN 8086 TO DISPLAY ,HELLO!MY NAME IS [YOUR FULL NAME]
+
+.model
+.stack 100h
+.data
+    msg1 db "Hello!My name is Manjila Shakya.$"
+    msg2 db "I learn in Trinity International College.$"
+    msg3 db "I am affiliated to Bsc Csit.$"
+.code
+    begin:
+        mov ax,@data
+        mov ds,ax
+       
+        lea dx,msg1
+        mov ah,9
+        int 21h  
+       
+        mov dx,10
+        mov ah,2
+        int 21h  
+       
+        mov dx,13
+        mov ah,2
+        int 21h
+       
+        lea dx,msg2
+        mov ah,9
+        int 21h
+       
+        mov dx,10
+        mov ah,2
+        int 21h  
+       
+        mov dx,13
+        mov ah,2
+        int 21h
+       
+       
+       
+        lea dx,msg3
+        mov ah,9
+        int 21h
+       
+         
+       
+        mov ah,4ch
+        int 21h
+       
+     end begin  
+
+   
+   
+    
